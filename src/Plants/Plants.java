@@ -1,7 +1,6 @@
 package Plants;
 
 public class Plants {
-    public static void main(String[] args){
         double preparationCost; //koszt przygotowania ziemi i sadzenia (w przeliczeniu na hektar)
         double protectionCost; //koszt ochrony przed szkodnikami (w przeliczeniu na hektar)
         double yield; //wydajnosc upraw w tonach z hektara (ile mozesz zebrac gotowego towaru)
@@ -12,5 +11,4 @@ public class Plants {
 
 
 
-    }
 }
