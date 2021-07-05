@@ -14,6 +14,24 @@ public class Main {
         farmer.lastName=lastName;
 
         System.out.println(farmer);
+
+        System.out.println("Wybierz farmę: 1, 2 lub 3:");
+        int wybor = scanner.nextInt();
+        switch (wybor){
+            case 1:
+
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Wybrales/as zla opcje!");
+        }
+
+
     }
+
+
 }
 

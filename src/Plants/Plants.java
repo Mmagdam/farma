@@ -8,6 +8,15 @@ public class Plants {
         String info; //informacje o tym w ktorych tygodniach roku mozna siac/sadzic
         double harvestCost; //koszt zbioru (w przeliczeniu na hektar)
         double price; //cene skupu kilograma
+        public Plants (double preparationCost, double protectionCost, double yield, int growthLength, String info, double harvestCost, double price){
+                this.preparationCost=preparationCost;
+                this.protectionCost=protectionCost;
+                this.yield=yield;
+                this.growthLength=growthLength;
+                this.info=info;
+                this.harvestCost=harvestCost;
+                this.price=price;
+        }
 
 
 

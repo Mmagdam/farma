@@ -2,6 +2,8 @@ package Ground;
 
 public class Ground {
 
-        double size; //rozmiar ziemi
+        int size; //(jedna jednostka to jeden hektar)
+        double price; //(cena)
+
 
 }
