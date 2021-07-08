@@ -1,7 +1,7 @@
 package Buildings;
 
 
-
+import Main.Farmer;
 
 public class Buildings {
 
@@ -21,7 +21,13 @@ public class Buildings {
     public static RabbitCage rabbitCage=new RabbitCage(1000, 1, "Rabbit Cage");
     public static Stable stable=new Stable(5000, 1, "Stable");
 
-    public static void buyBuilding() {
+    public static void buyBuilding(Farmer farmer, Buildings building) {
+        int length=farmer.farm.buildings.length;
+        if(farmer.wallet>=building.price){
+            farmer.farm.buildings[length]=building;
+            farmer.wallet=farmer.wallet-building.price;
+        }
+        else System.out.println("Masz za malo pieniedzy, zeby kupic ten budynek!");
     }
 
     public String toString() {

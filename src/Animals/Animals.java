@@ -1,5 +1,7 @@
 package Animals;
 
+import Main.Farm;
+import Main.Farmer;
 import Plants.Plants;
 
 import static Plants.Plants.clover;
@@ -28,7 +30,8 @@ public class Animals {
         Horse horse=new Horse(600,3, 60,208,7.5,Plants.clover, true);
         Rabbit rabbit=new Rabbit(50, 0.1, 0.06, 16, 0.04, Plants.lettuce, true);
 
-    public static void buyAnimals() {
+    public static void buyAnimals(Farmer farmer, Farm farm) {
+
     }
 
     public static void sellAnimals() {

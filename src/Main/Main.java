@@ -1,3 +1,5 @@
+package Main;
+
 import Animals.Animals;
 import Buildings.Buildings;
 import Ground.Ground;
@@ -20,7 +22,8 @@ public class Main {
         String lastName = scanner.nextLine();
         farmer.lastName=lastName;
         System.out.println(Farm.farm1);
-
+        Farm farm=new Farm(0.0,0, 0, null, null, null, null);
+        Buildings building=new Buildings(0, 0, null);
         do{
             boolean roundEnd=false;
         do {
@@ -31,34 +34,59 @@ public class Main {
             int wybor = scanner.nextInt();
             switch (wybor) {
                 case 1:
-                    Farm.buyFarm();
+                    farm= farm.getFarm();
+                    Farm.buyFarm(farmer, farm);
                     break;
                 case 2:
                     System.out.println("Wybierz:\n1. Kup ziemie uprawna\n2. Sprzedaj ziemie uprawna");
                     wybor = scanner.nextInt();
                     switch (wybor){
                         case 1:
-                            Ground.buyGround();
+                            Ground.buyGround(farmer, Ground.ground);
                             break;
                         case 2:
-                            Ground.sellGround();
+                            Ground.sellGround(farmer, Ground.ground);
                             break;
                         default:
                             System.out.println("Wybrales/las zla opcje!");
                     }
                     break;
                 case 3:
-                    Buildings.buyBuilding();
+                    System.out.println("Wybierz jaki budynek chcesz kupic:\n1. Barn\n2. Chicken Coop\n3. Cowshed\n4. Pigsty\n5. Rabbit Cage\n6. Stable");
+                    wybor = scanner.nextInt();
+                    switch (wybor){
+                        case 1:
+                            building=Buildings.barn;
+                            break;
+                        case 2:
+                            building=Buildings.chickenCoop;
+                            break;
+                        case 3:
+                            building=Buildings.cowshed;
+                            break;
+                        case 4:
+                            building=Buildings.pigsty;
+                            break;
+                        case 5:
+                            building=Buildings.rabbitCage;
+                            break;
+                        case 6:
+                            building=Buildings.stable;
+                            break;
+                        default:
+                            System.out.println("Wybrales/las zla opcje!");
+                    }
+                    Buildings.buyBuilding(farmer, building);
                     break;
                 case 4:
                     System.out.println("Wybierz:\n1. Kup zwierzeta\n2. Kup rosliny");
                     wybor = scanner.nextInt();
                     switch (wybor){
                         case 1:
-                            Animals.buyAnimals();
+                            Animals.buyAnimals(farmer, farm);
                             break;
                         case 2:
-                            Plants.buyPlants();
+                            Plants.buyPlants(farmer, farm);
                             break;
                         default:
                             System.out.println("Wybrales/las zla opcje!");

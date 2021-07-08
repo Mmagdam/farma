@@ -1,8 +1,12 @@
+package Main;
+
+import Main.Farm;
+
 public class Farmer {
-    String firstName;
-    String lastName;
-    Double wallet;
-    Farm farm;
+    public String firstName;
+    public String lastName;
+    public Double wallet;
+    public Farm farm;
 
     public Farmer(String firstName, String lastName, Double wallet, Farm farm){
         this.firstName=firstName;
@@ -12,7 +16,7 @@ public class Farmer {
     }
     @Override
     public String toString() {
-        return "Farmer:\nFirst name:"+ firstName + ", Last name:" + lastName + ", Wallet:" +wallet+", Farm:"+farm;
+        return "Main.Farmer:\nFirst name:"+ firstName + ", Last name:" + lastName + ", Wallet:" +wallet+", Main.Farm:"+farm;
 
     }
 }

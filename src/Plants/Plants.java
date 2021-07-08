@@ -1,5 +1,8 @@
 package Plants;
 
+import Main.Farm;
+import Main.Farmer;
+
 public class Plants {
         double preparationCost; //koszt przygotowania ziemi i sadzenia (w przeliczeniu na hektar)
         double protectionCost; //koszt ochrony przed szkodnikami (w przeliczeniu na hektar)
@@ -24,7 +27,7 @@ public class Plants {
         public static Lettuce lettuce=new Lettuce(3000, 1000, 20, 14, 6, 1000, 20);
 
 
-    public static void buyPlants() {
+    public static void buyPlants(Farmer farmer, Farm farm) {
     }
 
         public static void plantPlants() {
