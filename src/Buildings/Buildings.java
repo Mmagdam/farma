@@ -3,6 +3,8 @@ package Buildings;
 
 import Main.Farmer;
 
+import java.util.Scanner;
+
 public class Buildings {
 
     public int size; //rozmiar budynku
@@ -33,5 +35,11 @@ public class Buildings {
     public String toString() {
         return "Size:"+ size + ", Price:" + price + ", Name:" +name;
 
+    }
+    public static int getInt() {
+        return new Scanner(System.in).nextInt();
+    }
+    public static String getString() {
+        return new Scanner(System.in).next();
     }
 }

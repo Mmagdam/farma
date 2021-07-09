@@ -4,20 +4,19 @@ import Animals.Animals;
 import Ground.Ground;
 import Buildings.Buildings;
 import Plants.Plants;
-
-import java.util.*;
+import java.util.Random;
 import java.util.Scanner;
 public class Farm {
-    Scanner scanner = new Scanner(System.in);
+
 
 
         public double price;
         public int groundSize;
-        public static Ground[] ground = new Ground[5];
+        public static Ground[] ground = new Ground[9];
         public int buildingsNumber;
-        public static Buildings[] buildings=new Buildings[5];
-        public static Plants[] plants=new Plants[5];
-        public static Animals[] animals=new Animals[5];
+        public static Buildings[] buildings=new Buildings[9];
+        public static Plants[] plants=new Plants[9];
+        public static Animals[] animals=new Animals[9];
 
 
 
@@ -32,7 +31,7 @@ public class Farm {
 
     }
 
-public void Farm(){
+/*public void Farm(){
         farm1.buildings[0] =Buildings.barn;
         farm3.buildings[0]=Buildings.stable;
         farm3.buildings[1]=Buildings.cowshed;
@@ -40,13 +39,13 @@ public void Farm(){
         farm4.buildings[0]=Buildings.barn;
         farm4.buildings[1]=Buildings.chickenCoop;
         farm1.ground[0]=Ground.ground;
-        }
+        }*/
 
 
-        public static Farm farm1 = new Farm(13000, 1, 1,ground, buildings, null, null);
-        public Farm farm2 = new Farm(20000, 2, 0,null, null, null, null);
-        public Farm farm3 = new Farm(20000, 1, 3,null, null, null, null);
-        public Farm farm4 = new Farm(25000, 2, 3,null, null, null, null);
+        public static Farm farm1 = new Farm(13000, 1, 1,ground, buildings, plants, animals);
+        public static Farm farm2 = new Farm(20000, 2, 0,ground, buildings, plants, animals);
+        public static Farm farm3 = new Farm(20000, 1, 3,ground, buildings, plants, animals);
+        public static Farm farm4 = new Farm(25000, 2, 3,ground, buildings, plants, animals);
 
 
         public Farm getFarm() {
@@ -62,7 +61,7 @@ public void Farm(){
             System.out.println("Farma nr 1:"+farm[i]);
             System.out.println("Farma nr 2:"+farm[j]);
             System.out.println("Farma nr 3:"+farm[k]);
-            int choose = scanner.nextInt();
+            int choose = getInt();
             switch (choose){
                 case 1:
                     farms=farm[i];
@@ -90,6 +89,13 @@ public void Farm(){
     public String toString() {
         return "Price:"+ price + ", Ground size:" + groundSize + ", Buildings number:"+buildingsNumber+", Ground:"+ground+", Buildings:"+buildings;
 
+    }
+
+    public static int getInt() {
+        return new Scanner(System.in).nextInt();
+    }
+    public static String getString() {
+        return new Scanner(System.in).next();
     }
 
 }
