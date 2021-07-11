@@ -6,6 +6,7 @@ import Ground.Ground;
 import Plants.Plants;
 
 import javax.swing.plaf.basic.BasicButtonUI;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -23,11 +24,11 @@ public class Main {
         System.out.println("Podaj nazwisko:");
         String lastName = getString();
         farmer.lastName=lastName;
-        System.out.println(Farm.farm1);
-        Buildings[] farmerBuildings=new Buildings[9];
-        Ground[] farmerGround=new Ground[9];
-        Plants[] farmerPlants=new Plants[9];
-        Animals[] farmerAnimals=new Animals[9];
+        ArrayList<Ground> farmerGround=new ArrayList<Ground>();
+        ArrayList<Buildings> farmerBuildings=new ArrayList<Buildings>();
+        ArrayList<Plants> farmerPlants=new ArrayList<Plants>();
+        ArrayList<Animals> farmerAnimals=new ArrayList<Animals>();
+
         Farm farm=new Farm(0.0,0, 0, farmerGround, farmerBuildings, farmerPlants, farmerAnimals);
         Buildings building=new Buildings(0, 0, null);
         do{
@@ -46,19 +47,19 @@ public class Main {
             int wybor = getInt();
             switch (wybor) {
                 case 1:
-                    farm= farm.getFarm();
+                    farm = farm.getFarm();
                     Farm.buyFarm(farmer, farm);
                     break;
                 case 2:
                     System.out.println("Wybierz:\n1. Kup ziemie uprawna\n2. Sprzedaj ziemie uprawna");
                     wybor = getInt();
-                    switch (wybor){
+                    switch (wybor) {
                         case 1:
                             Ground.buyGround(farmer, Ground.ground, farmerGround);
                             break;
                         case 2:
-                            if(farmer.farm.ground!=null)
-                            Ground.sellGround(farmer, Ground.ground);
+                            if (farmer.farm.ground != null)
+                                Ground.sellGround(farmer, Ground.ground);
                             else System.out.println("Nie masz ziemi na sprzedaz!");
                             break;
                         default:
@@ -68,24 +69,24 @@ public class Main {
                 case 3:
                     System.out.println("Wybierz jaki budynek chcesz kupic:\n1. Barn\n2. Chicken Coop\n3. Cowshed\n4. Pigsty\n5. Rabbit Cage\n6. Stable");
                     wybor = getInt();
-                    switch (wybor){
+                    switch (wybor) {
                         case 1:
-                            building=Buildings.barn;
+                            building = Buildings.barn;
                             break;
                         case 2:
-                            building=Buildings.chickenCoop;
+                            building = Buildings.chickenCoop;
                             break;
                         case 3:
-                            building=Buildings.cowshed;
+                            building = Buildings.cowshed;
                             break;
                         case 4:
-                            building=Buildings.pigsty;
+                            building = Buildings.pigsty;
                             break;
                         case 5:
-                            building=Buildings.rabbitCage;
+                            building = Buildings.rabbitCage;
                             break;
                         case 6:
-                            building=Buildings.stable;
+                            building = Buildings.stable;
                             break;
                         default:
                             System.out.println("Wybrales/las zla opcje!");
@@ -95,7 +96,7 @@ public class Main {
                 case 4:
                     System.out.println("Wybierz:\n1. Kup zwierzeta\n2. Kup rosliny");
                     wybor = getInt();
-                    switch (wybor){
+                    switch (wybor) {
                         case 1:
                             Animals.buyAnimals(farmer, farm);
                             break;
@@ -115,7 +116,7 @@ public class Main {
                 case 7:
                     System.out.println("Wybierz:\n1. Sprzedaj zwierzeta\n2. Sprzedaj rosliny");
                     wybor = getInt();
-                    switch (wybor){
+                    switch (wybor) {
                         case 1:
                             Animals.sellAnimals();
                             break;
@@ -136,14 +137,16 @@ public class Main {
                     Plants.plantInfo();
                     break;
                 case 11:
-                    roundEnd=true;
+                    roundEnd = true;
                     break;
                 default:
                     System.out.println("Wybrales/as zla opcje!");
             }
 
-        }while(roundEnd==false);
+            System.out.println(farmer.farm);
 
+        }while(roundEnd==false);
+        
     }while(ifEnd==false);
     }
 

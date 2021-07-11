@@ -33,45 +33,45 @@ public class Plants {
 
     public static void buyPlants(Farmer farmer, Farm farm) {
 
-        int length = farmer.farm.plants.length;
+        int length = farmer.farm.plants.size();
         System.out.println("Wybierz rosliny jakie chcesz kupic(kilogram):\n1. Apple Tree\n2. Beetroot\n3. Clover\n4. Cucumber\n5. Lettuce");
         int wybor = getInt();
         for(int i=0; i<length; i++ ){
-            if(farmer.farm.buildings[i]== Buildings.barn){
+            if(farmer.farm.buildings.get(i)== Buildings.barn){
 
 
         switch (wybor){
             case 1:
                         if(farmer.wallet>= appleTree.price){
-                                farmer.farm.plants[length]=appleTree;
+                                farmer.farm.plants.add(appleTree);
                                 farmer.wallet=farmer.wallet-appleTree.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
                         break;
             case 2:
                 if(farmer.wallet>= beetRoot.price){
-                    farmer.farm.plants[length]=beetRoot;
+                    farmer.farm.plants.add(beetRoot);
                     farmer.wallet=farmer.wallet-beetRoot.price;
                 }
                 else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
                 break;
             case 3:
                 if(farmer.wallet>= clover.price){
-                    farmer.farm.plants[length]=clover;
+                    farmer.farm.plants.add(clover);
                     farmer.wallet=farmer.wallet-clover.price;
                 }
                 else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
                 break;
             case 4:
                 if(farmer.wallet>= cucumber.price){
-                    farmer.farm.plants[length]=cucumber;
+                    farmer.farm.plants.add(cucumber);
                     farmer.wallet=farmer.wallet- cucumber.price;
                 }
                 else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
                 break;
             case 5:
                 if(farmer.wallet>= lettuce.price){
-                    farmer.farm.plants[length]=lettuce;
+                    farmer.farm.plants.add(lettuce);
                     farmer.wallet=farmer.wallet-lettuce.price;
                 }
                 else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
@@ -84,56 +84,6 @@ public class Plants {
     }}
 
         public static void plantPlants(Farmer farmer, Farm farm) {
-            int length = farmer.farm.plants.length;
-            System.out.println("Wybierz rosliny jakie chcesz kupic(kilogram):\n1. Apple Tree\n2. Beetroot\n3. Clover\n4. Cucumber\n5. Lettuce");
-            int wybor = getInt();
-            for(int i=0; i<length; i++ ){
-                if(farmer.farm.buildings[i]== Buildings.barn){
-
-
-                    switch (wybor){
-                        case 1:
-                            if(farmer.wallet>= appleTree.price){
-                                farmer.farm.plants[length]=appleTree;
-                                farmer.wallet=farmer.wallet-appleTree.price;
-                            }
-                            else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
-                            break;
-                        case 2:
-                            if(farmer.wallet>= beetRoot.price){
-                                farmer.farm.plants[length]=beetRoot;
-                                farmer.wallet=farmer.wallet-beetRoot.price;
-                            }
-                            else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
-                            break;
-                        case 3:
-                            if(farmer.wallet>= clover.price){
-                                farmer.farm.plants[length]=clover;
-                                farmer.wallet=farmer.wallet-clover.price;
-                            }
-                            else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
-                            break;
-                        case 4:
-                            if(farmer.wallet>= cucumber.price){
-                                farmer.farm.plants[length]=cucumber;
-                                farmer.wallet=farmer.wallet- cucumber.price;
-                            }
-                            else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
-                            break;
-                        case 5:
-                            if(farmer.wallet>= lettuce.price){
-                                farmer.farm.plants[length]=lettuce;
-                                farmer.wallet=farmer.wallet-lettuce.price;
-                            }
-                            else System.out.println("Masz za malo pieniedzy, zeby kupic te rosliny");
-                            break;
-                        default:
-                            System.out.println("Wybrales/las zla opcje!");
-
-                    }}
-                else System.out.println("Nie masz odpowiedniego budynku, zeby kupic rosliny!");
-            }
-
         }
 
         public static void harvestCrop() {

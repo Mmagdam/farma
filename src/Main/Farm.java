@@ -4,23 +4,27 @@ import Animals.Animals;
 import Ground.Ground;
 import Buildings.Buildings;
 import Plants.Plants;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 public class Farm {
 
 
-
+        Random rnd = new Random();
         public double price;
-        public int groundSize;
-        public static Ground[] ground = new Ground[9];
-        public int buildingsNumber;
-        public static Buildings[] buildings=new Buildings[9];
-        public static Plants[] plants=new Plants[9];
-        public static Animals[] animals=new Animals[9];
+        public int groundSize=0;
+        public int buildingsNumber=0;
+        public static ArrayList<Ground> ground=new ArrayList<Ground>();
+        public static ArrayList<Buildings> buildings=new ArrayList<Buildings>();
+        public static ArrayList<Plants> plants=new ArrayList<Plants>();
+        public static ArrayList<Animals> animals=new ArrayList<Animals>();
 
 
 
-    public Farm(double price, int groundSize, int buildingsNumber, Ground[]ground, Buildings[]buildings, Plants[]plants, Animals[]animals){
+
+    public Farm(double price, int groundSize, int buildingsNumber, ArrayList<Ground>ground, ArrayList<Buildings>buildings, ArrayList<Plants> plants, ArrayList<Animals>animals){
         this.price = price;
         this.groundSize = groundSize;
         this.buildingsNumber=buildingsNumber;
@@ -31,32 +35,38 @@ public class Farm {
 
     }
 
-/*public void Farm(){
-        farm1.buildings[0] =Buildings.barn;
-        farm3.buildings[0]=Buildings.stable;
-        farm3.buildings[1]=Buildings.cowshed;
-        farm3.buildings[2]=Buildings.rabbitCage;
-        farm4.buildings[0]=Buildings.barn;
-        farm4.buildings[1]=Buildings.chickenCoop;
-        farm1.ground[0]=Ground.ground;
-        }*/
+        public ArrayList<Buildings>RandomBuildings(int size){
+        int number = 0;
+        Buildings[] buildingsArray = {Buildings.barn,Buildings.stable, Buildings.cowshed, Buildings.rabbitCage, Buildings.chickenCoop};
+        int max = buildingsArray.length;
+        ArrayList<Buildings> buildingsList = new ArrayList<Buildings>();
+        while (size>0){
+            number=rnd.nextInt(max);
+            if(!buildingsList.contains((buildingsArray[number]))){
+                buildingsList.add(buildingsArray[number]);
+                size--;
+            }
+        }
+        return buildingsList;
+        }
 
-
-        public static Farm farm1 = new Farm(13000, 1, 1,ground, buildings, plants, animals);
-        public static Farm farm2 = new Farm(20000, 2, 0,ground, buildings, plants, animals);
-        public static Farm farm3 = new Farm(20000, 1, 3,ground, buildings, plants, animals);
-        public static Farm farm4 = new Farm(25000, 2, 3,ground, buildings, plants, animals);
-
-
-        public Farm getFarm() {
-            Farm[] farm = {farm1, farm2, farm3, farm4};
-            Farm farms=new Farm(0.0,0, 0, null, null, null, null);
+        public Farm getFarm(){
+        Farm farm1= new Farm(13000, 1, 1,ground, RandomBuildings(1), plants, animals);
+        RandomBuildings(1);
+        Farm farm2= new Farm(13000, 1, 3,ground, RandomBuildings(3), plants, animals);
+        RandomBuildings(3);
+        Farm farm3= new Farm(13000, 1, 3,ground, RandomBuildings(3), plants, animals);
+        RandomBuildings(3);
+        Farm farm4= new Farm(13000, 1, 3,ground, RandomBuildings(3), plants, animals);
+        RandomBuildings(3);
+        Farm[] farm = {farm1, farm2, farm3, farm4};
+        Farm farms=new Farm(0.0,0,0,null, null, null, null);
         Random rand = new Random();
-        int i = rand.nextInt(farm.length-1);
-        int j = rand.nextInt(farm.length-1);
-        do j = rand.nextInt(farm.length-1);while(j==i);
-        int k = rand.nextInt(farm.length-1);
-        do k = rand.nextInt(farm.length-1);while(k==i||k==j);
+            int i = rand.nextInt(farm.length-1);
+            int j = rand.nextInt(farm.length-1);
+            do j = rand.nextInt(farm.length-1);while(j==i);
+            int k = rand.nextInt(farm.length-1);
+            do k = rand.nextInt(farm.length-1);while(k==i||k==j);
             System.out.println("Wybierz jedną z trzech farm:");
             System.out.println("Farma nr 1:"+farm[i]);
             System.out.println("Farma nr 2:"+farm[j]);
@@ -72,11 +82,11 @@ public class Farm {
                 case 3:
                     farms=farm[k];
                     break;
-                default:
+                    default:
                     System.out.println("Wybrales/las zla opcje!");
-            }
-            return farms;
         }
+    return farms;
+    }
 
     public static void buyFarm(Farmer farmer, Farm farm) {
     if(farmer.wallet>=farm.price){

@@ -3,6 +3,7 @@ import Main.Farmer;
 import Plants.Plants;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Ground {
 
@@ -16,21 +17,20 @@ public class Ground {
         };
         public static Ground ground=new Ground(1, 10000, null);
 
-        public static void buyGround(Farmer farmer, Ground ground, Ground[] farmerGround) {
-                if(farmerGround.length>9) {
+        public static void buyGround(Farmer farmer, Ground ground, ArrayList<Ground>farmerGround) {
+                if(farmerGround.size()>9) {
                         System.out.println("Nie mozesz kupic wiecej ziemi!");
                 }
                         else{
                 if(farmerGround==null){
                         if(farmer.wallet>=ground.price){
-                                farmerGround[0]=ground;
+                                farmerGround.add(ground);
                                 farmer.wallet=farmer.wallet-ground.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te ziemie!");}
                 else{
-                        int length=farmerGround.length;
                         if(farmer.wallet>=ground.price){
-                                farmerGround[length]=ground;
+                                farmerGround.add(ground);
                                 farmer.wallet=farmer.wallet-ground.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te ziemie!");}}
@@ -39,22 +39,16 @@ public class Ground {
         }
 
         public static void sellGround(Farmer farmer, Ground ground) {
-                int length=farmer.farm.ground.length;
-                if(length>0){
-                        System.out.println("Twoje ziemie to:"+farmer.farm.ground);
-                        System.out.println("Wybierz ziemie na sprzedaz od 0 do "+length);
-                        int choose = getInt();
-                        if(choose>length){
-                                System.out.println("Wybrales/las zla opcje!");
-                        }
-                        else{
-                                for(int i=choose;i<length-choose;i++){
-                                        farmer.farm.ground[i]=farmer.farm.ground[length+i-choose];
-                                }
-                                System.out.println("Twoja ziemia zostala sprzedana!");
-                        }
+                int length = farmer.farm.ground.size();
+                System.out.println("Twoje ziemie to:" + farmer.farm.ground);
+                System.out.println("Wybierz ziemie na sprzedaz od 0 do " + length);
+                int choose = getInt();
+                if (choose > length) {
+                        System.out.println("Wybrales/las zla opcje!");
+                } else {
+                        farmer.farm.ground.remove(choose);
+                        System.out.println("Twoja ziemia zostala sprzedana!");
                 }
-                else System.out.println("Nie masz ziemi na sprzedaz!");
         }
 
         public String toString() {

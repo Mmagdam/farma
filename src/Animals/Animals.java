@@ -36,15 +36,15 @@ public class Animals {
         public static Rabbit rabbit=new Rabbit(50, 0.1, 0.06, 16, 0.04, Plants.lettuce, true);
 
     public static void buyAnimals(Farmer farmer, Farm farm) {
-        int length = farmer.farm.animals.length;
+        int length = farmer.farm.animals.size();
         System.out.println("Wybierz zwierze jakie chcesz kupic:\n1. Chicken\n2. Cow\n3. Horse\n4. Pig\n5. Rabbit");
         int wybor = getInt();
         switch (wybor){
             case 1:
                 for(int i=0; i<length; i++ ){
-                if(farmer.farm.buildings[i]==Buildings.chickenCoop){
+                if(farmer.farm.buildings.get(i)==Buildings.chickenCoop){
                     if(farmer.wallet>=chicken.price){
-                        farmer.farm.animals[length]=chicken;
+                        farmer.farm.animals.add(chicken);
                         farmer.wallet=farmer.wallet- chicken.price;
                     }
                     else System.out.println("Masz za malo pieniedzy, zeby kupic te zwierze");
@@ -53,9 +53,9 @@ public class Animals {
                 }
             case 2:
                 for(int i=0; i<length; i++ ){
-                    if(farmer.farm.buildings[i]==Buildings.cowshed){
+                    if(farmer.farm.buildings.get(i)==Buildings.cowshed){
                         if(farmer.wallet>=cow.price){
-                            farmer.farm.animals[length]=cow;
+                            farmer.farm.animals.add(cow);
                             farmer.wallet=farmer.wallet- cow.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te zwierze");
@@ -64,9 +64,9 @@ public class Animals {
                 }
             case 3:
                 for(int i=0; i<length; i++ ){
-                    if(farmer.farm.buildings[i]==Buildings.stable){
+                    if(farmer.farm.buildings.get(i)==Buildings.stable){
                         if(farmer.wallet>=horse.price){
-                            farmer.farm.animals[length]=horse;
+                            farmer.farm.animals.add(horse);
                             farmer.wallet=farmer.wallet- horse.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te zwierze");
@@ -75,9 +75,9 @@ public class Animals {
                 }
             case 4:
                 for(int i=0; i<length; i++ ){
-                    if(farmer.farm.buildings[i]==Buildings.pigsty){
+                    if(farmer.farm.buildings.get(i)==Buildings.pigsty){
                         if(farmer.wallet>=pig.price){
-                            farmer.farm.animals[length]=pig;
+                            farmer.farm.animals.add(pig);
                             farmer.wallet=farmer.wallet- pig.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te zwierze");
@@ -86,9 +86,9 @@ public class Animals {
                 }
             case 5:
                 for(int i=0; i<length; i++ ){
-                    if(farmer.farm.buildings[i]==Buildings.rabbitCage){
+                    if(farmer.farm.buildings.get(i)==Buildings.rabbitCage){
                         if(farmer.wallet>=rabbit.price){
-                            farmer.farm.animals[length]=rabbit;
+                            farmer.farm.animals.add(rabbit);
                             farmer.wallet=farmer.wallet- rabbit.price;
                         }
                         else System.out.println("Masz za malo pieniedzy, zeby kupic te zwierze");
